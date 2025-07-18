@@ -422,12 +422,11 @@
         </div>
     </div>
 
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <script type="module">
-        import { inject } from 'https://cdn.skypack.dev/@vercel/analytics';
-        import { track } from 'https://cdn.skypack.dev/@vercel/analytics';
-        
-        // Initialize Vercel Analytics
-        inject();
         
         let totalScore = 0;
 
@@ -443,8 +442,8 @@
             updateResults();
             
             // Track analytics event
-            if (typeof track === 'function') {
-                track('score_calculated', { score: totalScore });
+            if (window.va) {
+                window.va('track', 'score_calculated', { score: totalScore });
             }
         }
 
@@ -485,8 +484,8 @@
             taperingDetails.textContent = taperingText;
             
             // Track risk level analytics
-            if (typeof track === 'function') {
-                track('risk_level_determined', { 
+            if (window.va) {
+                window.va('track', 'risk_level_determined', { 
                     risk_level: riskText.toLowerCase().replace(' ', '_'),
                     score: totalScore 
                 });
@@ -521,8 +520,8 @@ Reference: Horowitz, M.A., Framer, A., Hengartner, M.P. et al. Estimating Risk o
             window.URL.revokeObjectURL(url);
             
             // Track export analytics
-            if (typeof track === 'function') {
-                track('results_exported', { 
+            if (window.va) {
+                window.va('track', 'results_exported', { 
                     risk_level: riskText.toLowerCase().replace(' ', '_'),
                     score: totalScore 
                 });
@@ -541,16 +540,16 @@ Reference: Horowitz, M.A., Framer, A., Hengartner, M.P. et al. Estimating Risk o
             document.getElementById('resultsSection').style.display = 'none';
             
             // Track reset analytics
-            if (typeof track === 'function') {
-                track('calculator_reset');
+            if (window.va) {
+                window.va('track', 'calculator_reset');
             }
         }
 
         // Add event listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Track page view
-            if (typeof track === 'function') {
-                track('calculator_loaded');
+            if (window.va) {
+                window.va('track', 'calculator_loaded');
             }
             
             document.querySelectorAll('input[type="radio"]').forEach(input => {
