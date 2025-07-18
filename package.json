@@ -1,0 +1,26 @@
+{
+  "name": "antidepressant-withdrawal-calculator",
+  "version": "1.0.0",
+  "description": "Clinical tool for assessing antidepressant withdrawal risk based on published research",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build needed for static site'",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "antidepressant",
+    "withdrawal",
+    "clinical-tool",
+    "healthcare",
+    "psychiatry"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
